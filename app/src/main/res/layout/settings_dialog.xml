@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView android:text="@string/settings_drag_sensitivity"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"/>
+
+    <SeekBar android:text="@string/settings_drag_sensitivity"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/id_drag_sensitivity"/>
+
+    <CheckBox android:text="@string/settings_drag_lock"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:id="@+id/id_drag_lock"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <TextView android:text="@string/settings_music"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+    <CheckBox android:id="@+id/play_sounds"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/settings_play_sounds"/>
+
+    <CheckBox android:id="@+id/play_music"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/settings_play_music"/>
+
+    <TextView android:text="@string/settings_track"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/track_selection_group"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <RadioButton android:id="@+id/a"
+                     android:layout_width="55dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/settings_a"/>
+        <RadioButton android:id="@+id/b"
+                     android:layout_width="55dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/settings_b"/>
+        <RadioButton android:id="@+id/c"
+                     android:layout_width="55dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/settings_c"/>
+        <RadioButton android:id="@+id/d"
+                     android:layout_width="55dp"
+                     android:layout_height="wrap_content"
+                     android:text="@string/settings_d"/>
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <Button android:text="@string/settings_defaults"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/id_restore_defaults"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <Button android:text="@string/settings_back"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/id_back"/>
+
+</LinearLayout>
