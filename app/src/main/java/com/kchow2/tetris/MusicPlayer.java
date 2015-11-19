@@ -18,6 +18,7 @@ public class MusicPlayer {
 	Context context;
 	private MediaPlayer mediaPlayer;
 	private final String tracks[] = {"theme_a.mp3","theme_b.mp3","theme_c.mp3","theme_d.mp3"};
+	float volume = 1.0f;
 
 	public MusicPlayer(Context ctx){
 		this.context = ctx;
@@ -36,6 +37,7 @@ public class MusicPlayer {
 			afd.close();
 			mediaPlayer.prepare(); // might take long! (for buffering, etc)
 			mediaPlayer.setLooping(true);
+			mediaPlayer.setVolume(volume, volume);
 			mediaPlayer.start();
 		}
 		catch(IOException e){
@@ -51,5 +53,16 @@ public class MusicPlayer {
 			this.mediaPlayer.release();
 			this.mediaPlayer = null;
 		}
+	}
+
+	public void setVolume(float volume){
+		this.volume = volume;
+		if(this.mediaPlayer != null && this.mediaPlayer.isPlaying()) {
+			this.mediaPlayer.setVolume(volume, volume);
+		}
+	}
+
+	public float getVolume(){
+		return this.volume;
 	}
 }

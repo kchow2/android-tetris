@@ -12,6 +12,8 @@ public class Settings {
 	private int musicSelection;
 	private boolean musicOn;
 	private boolean soundsOn;
+	private float volume;
+
 
 	public Settings(){
 		restoreDefaults();
@@ -59,12 +61,21 @@ public class Settings {
 		this.soundsOn = soundsOn;
 	}
 
+	public void setVolume(float volume){
+		this.volume = Math.max(Math.min(volume, 1.0f), 0.0f);
+	}
+
+	public float getVolume(){
+		return this.volume;
+	}
+
 	public void restoreDefaults(){
 		dragSensitivity = 50;
 		dragLock = true;
 		musicSelection = 0;
 		musicOn = true;
 		soundsOn = true;
+		volume = 1.0f;
 	}
 
 
@@ -74,6 +85,7 @@ public class Settings {
 		musicSelection = prefs.getInt("musicSelection", 0);
 		musicOn = prefs.getBoolean("musicOn", true);
 		soundsOn = prefs.getBoolean("soundsOn", true);
+		volume = prefs.getFloat("volume", 1.0f);
 	}
 
 	public void saveToSharedPreferences(SharedPreferences prefs){
@@ -83,6 +95,7 @@ public class Settings {
 		editor.putInt("musicSelection", musicSelection);
 		editor.putBoolean("musicOn", musicOn);
 		editor.putBoolean("soundsOn", soundsOn);
+		editor.putFloat("volume", volume);
 		editor.commit();
 	}
 }

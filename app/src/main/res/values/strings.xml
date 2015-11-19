@@ -27,5 +27,6 @@
     <string name="settings_d">D</string>
     <string name="settings_play_music">Play Music</string>
     <string name="settings_play_sounds">Play Sounds</string>
+    <string name="settings_volume">Volume</string>
 
 </resources>

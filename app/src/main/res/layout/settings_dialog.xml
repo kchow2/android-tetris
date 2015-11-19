@@ -69,6 +69,15 @@
                      android:text="@string/settings_d"/>
     </RadioGroup>
 
+    <TextView android:text="@string/settings_volume"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"/>
+
+    <SeekBar android:text="@string/settings_drag_sensitivity"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:id="@+id/id_music_volume"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -78,11 +87,6 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:id="@+id/id_restore_defaults"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
 
     <Button android:text="@string/settings_back"
                android:layout_width="match_parent"

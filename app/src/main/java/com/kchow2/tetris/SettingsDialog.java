@@ -65,6 +65,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 				((RadioGroup)view.findViewById(R.id.track_selection_group)).check(R.id.d);
 				break;
 		}
+		((SeekBar)(view.findViewById(R.id.id_music_volume))).setProgress((int) (settings.getVolume()*100));
 
 		//setup the listeners for the controls. Note that this should be done after setting the initial states of the controls,
 		//since they don't 'exist' yet, so any listener code that tries to change
@@ -79,6 +80,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 		((CheckBox)view.findViewById(R.id.play_music)).setOnCheckedChangeListener(this);
 		((CheckBox)view.findViewById(R.id.play_sounds)).setOnCheckedChangeListener(this);
 		((SeekBar)(view.findViewById(R.id.id_drag_sensitivity))).setOnSeekBarChangeListener(this);
+		((SeekBar)(view.findViewById(R.id.id_music_volume))).setOnSeekBarChangeListener(this);
 
 		return view;
 	}
@@ -109,6 +111,7 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 				((RadioGroup)this.getDialog().findViewById(R.id.track_selection_group)).check(R.id.d);
 				break;
 		}
+		((SeekBar)(this.getDialog().findViewById(R.id.id_music_volume))).setProgress((int) (settings.getVolume()*100));
 	}
 
 	public void onClick(View v){
@@ -188,7 +191,13 @@ public class SettingsDialog extends DialogFragment implements View.OnClickListen
 
 	public void	onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
 		//seekbar progress is a value from 0-100. Scale this to sensitivity value to use in GameActivity
-		this.settings.setDragSensitivity(progress);
+		if(seekBar.getId() == R.id.id_drag_sensitivity) {
+			this.settings.setDragSensitivity(progress);
+		}
+		else{
+			this.settings.setVolume(progress/100.0f);
+			this.musicPlayer.setVolume(progress/100.0f);
+		}
 	}
 
 	public void	onStartTrackingTouch(SeekBar seekBar){

@@ -44,7 +44,7 @@ public class GameActivity extends Activity implements Board.OnSavePieceListener,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState);
 		//drawView = new BoardView(this, this.board);
 
 		board.addSavePieceListener(this);
@@ -58,7 +58,7 @@ public class GameActivity extends Activity implements Board.OnSavePieceListener,
 		gameView.addFlashingAnimationListener(score);
 		gameView.addFlashingAnimationListener(board);
 		setContentView(gameView);
-        newGame();
+		newGame();
 
 		//init music
 		this.musicPlayer = new MusicPlayer(this);
@@ -66,10 +66,9 @@ public class GameActivity extends Activity implements Board.OnSavePieceListener,
 		//load settings from shared prefs
 		SharedPreferences sharedPrefs = this.getPreferences(Context.MODE_PRIVATE);
 		settings.loadFromSharedPreferences(sharedPrefs);
-		//if(settings.isMusicOn()){
-		//	this.musicPlayer.play(settings.getMusicSelection());
-		//}
-    }
+
+		//music is started in onResume()
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -115,6 +114,7 @@ public class GameActivity extends Activity implements Board.OnSavePieceListener,
 	public void onResume(){
 		super.onResume();
 		if(settings.isMusicOn()) {
+			musicPlayer.setVolume(settings.getVolume());
 			musicPlayer.play(settings.getMusicSelection());
 		}
 	}
